@@ -1,38 +1,41 @@
-export const initialState = {
-    todo :[
+export const initialState = [
     {
-        item: 'Work on todo reducers',
+        todo: "Make Bed",
         completed: false,
-        id: 0
+        id: new Date()
     },
     {
-        item: 'Yoga',
+        todo: "Read Book",
         completed: false,
-        id: 1
+        id: new Date()
+    }
+    , {
+        todo: "Go for a run",
+        completed: false,
+        id: new Date()
     },
     {
-        item: 'Read Book',
+        todo: "walk dog",
         completed: false,
-        id: 2
+        id: new Date()
     }
 ]
-}
 
-export const todoReducer = (state, action) => {
-    console.log(initialState);
+export const reducer = (state, action) => {
     switch (action.type) {
         case "ADD_TODO":
-            return {
-                ...state,
-                todo: [...state.todo,
-                    {
-                        item:action.payload,
-                        id: Date.now(),
-                        completed: false
-                    }
-                ]
-            }
+            return [
+                ...state, action.payload
+            ]
+        case "COMPLETED_TODO":
+            return state.map((item) => {
+                return item.id === action.payload ?
+                {...item, completed: !item.completed} : item
+            })
+        case "CLEAR_COMPLETED":
+            return state.filter((item) => !item.completed)
+
         default:
-            return state;
+            return state
     }
 };
