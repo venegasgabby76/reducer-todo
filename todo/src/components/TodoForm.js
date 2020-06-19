@@ -11,7 +11,7 @@ const TodoForm = (props)  => {
 		}}>
 			<input 
 				name='todo' 
-				placeholder='Add Todo' 
+				placeholder='What needs to get done' 
 				value={form}
 				onChange={(e) => {
 					setForm(e.target.value);

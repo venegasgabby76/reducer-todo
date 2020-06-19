@@ -1,17 +1,16 @@
 import React, { useReducer } from 'react';
 import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
-import { initialState, reducer } from './reducers/reducers';
+import { initialState, todoReducer } from './reducers/reducers';
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state);
+  const [state, dispatch] = useReducer(todoReducer, initialState);
 
-  const addTask = (input) => {
+  const addTask = (task) => {
     const newTodo = {
-      todo: input,
+      todo: task,
       completed: false,
-      id: new Date()
+      id: Date.now()
     }
     dispatch({ type: "ADD_TODO", payload: newTodo })
   }

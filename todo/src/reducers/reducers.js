@@ -2,26 +2,26 @@ export const initialState = [
     {
         todo: "Make Bed",
         completed: false,
-        id: new Date()
+        id: 0
     },
     {
         todo: "Read Book",
         completed: false,
-        id: new Date()
+        id: 1
     }
     , {
         todo: "Go for a run",
         completed: false,
-        id: new Date()
+        id: 2
     },
     {
         todo: "walk dog",
         completed: false,
-        id: new Date()
+        id: 3
     }
 ]
 
-export const reducer = (state, action) => {
+export const todoReducer = (state, action) => {
     switch (action.type) {
         case "ADD_TODO":
             return [
